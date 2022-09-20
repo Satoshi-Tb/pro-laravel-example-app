@@ -23,9 +23,27 @@
         </form>
     </div>
     <div>
-    @foreach($tweets as $tweet)
-        <p>{{ $tweet->content }}</p>
-    @endforeach
+        <table>
+            <thead>
+                <tr>
+                    <th>つぶやき</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($tweets as $tweet)
+                <tr>
+                    <td>
+                        <details>
+                            <summary>{{ $tweet->content }}</summary>
+                            <div>
+                                <a href="{{ route('tweet.update.index', ['tweetId' => $tweet->id]) }}">編集</a>
+                            </div>
+                        </details>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
 </body>
 </html>
